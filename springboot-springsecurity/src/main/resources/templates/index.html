@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+
+<style>
+    html, body {
+        width: 100%;
+        font-size: 25px;
+    }
+
+    header {
+        text-align: center;
+        height: 50px;
+        /*line-height: 50px;*/
+    }
+
+    header div:first-child {
+        display: inline;
+    }
+
+    #content {
+        width: 50%;
+        margin: 50px auto;
+    }
+
+    section {
+        margin: 50px;
+    }
+
+    section a {
+        margin: 10px;
+    }
+</style>
+<body>
+
+<header>
+    index -
+    <!-- 如果未登录，显示登陆按钮 -->
+    <div sec:authorize="!isAuthenticated()"> <!-- 判断用户是否已经认证 -->
+        <a th:href="@{/toLogin}">登录</a>
+    </div>
+    ----
+    <!-- 如果已经登陆，显示用户名+注销按钮 -->
+    <div sec:authorize="isAuthenticated()">
+        <a>
+            用户名：<span sec:authentication="name"></span>
+        </a>
+        <a th:href="@{/logout}">注销</a>
+    </div>
+</header>
+<div id="content">
+    <section sec:authorize="hasRole('vip1')">
+        <a th:href="@{/level1/1}"> level1-1</a>
+        <a th:href="@{/level1/2}"> level1-2</a>
+        <a th:href="@{/level1/3}"> level1-3</a>
+    </section>
+
+    <section sec:authorize="hasRole('vip2')">
+        <a th:href="@{/level2/1}"> level2-1</a>
+        <a th:href="@{/level2/2}"> level2-2</a>
+        <a th:href="@{/level2/3}"> level2-3</a>
+    </section>
+
+    <section sec:authorize="hasRole('vip3')">
+        <a th:href="@{/level3/1}"> level3-1</a>
+        <a th:href="@{/level3/2}"> level3-2</a>
+        <a th:href="@{/level3/3}"> level3-3</a>
+    </section>
+</div>
+</body>
+</html>

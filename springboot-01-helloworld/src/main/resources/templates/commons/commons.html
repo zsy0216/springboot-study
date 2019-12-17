@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- 顶部-->
+<header class="topbar" data-navbarbg="skin5" th:fragment="topbar">
+    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+        <div class="navbar-header" data-logobg="skin5">
+            <a class="navbar-brand" href="dashboard.html">
+                <!-- Logo icon -->
+                <b class="logo-icon">
+                    <img class="mb-4" th:src="@{/static/img/bootstrap-solid.svg}" alt="" width="36" height="36">
+                </b>
+            </a>
+        </div>
+        <a th:href="@{/user/logout}">注销</a>
+    </nav>
+</header>
+
+<!-- 侧边栏 -->
+<aside class="left-sidebar" data-sidebarbg="skin6" th:fragment="sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <!-- User Profile-->
+                <li>
+                    <div class="user-profile d-flex no-block dropdown m-t-20">
+                        <div class="user-content hide-menu m-l-10">
+                            <h5 class="m-b-0 user-name font-medium" th:text="${session.loginUser}">Steave Jobs
+                                <i class="fa fa-angle-down"></i>
+                            </h5>
+                            <span class="op-5 user-email">[[${session.loginUser}]]@gmail.com</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="sidebar-item">
+                    <a th:class="${active == 'main.html'?'sidebar-link active':'sidebar-link'}" th:href="@{/main.html}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">首页</span></a>
+                </li>
+                <li class="sidebar-item">
+                    <a th:class="${active == 'list.html'?'sidebar-link active':'sidebar-link'}" th:href="@{/emps}" aria-expanded="false"><i class="mdi mdi-account-network"></i><span class="hide-menu">员工管理</span></a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="emp/list.html" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Table</span></a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Icon</span></a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Blank</span></a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="error-404.html" aria-expanded="false"><i class="mdi mdi-alert-outline"></i><span class="hide-menu">404</span></a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+
+</html>
