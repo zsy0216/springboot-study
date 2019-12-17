@@ -24,5 +24,3 @@ springboot小试牛刀，包括thymeleaf的使用，登录页面国际化，登�
    3. 添加成功
    4. 返回首页
 6. 404页面
-
-[github地址](https://github.com/zsy0216/springboot-helloworld)
